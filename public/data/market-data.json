@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-30T10:52:45.556834",
+  "timestamp": "2026-03-30T12:19:26.830933",
   "data": {
     "gdp": 5.0,
     "cpi": 1.3,
@@ -15,44 +15,23 @@
     "bdi": 1317.0,
     "margin": 8016.0,
     "us10y": 4.44,
-    "oil": 101.5,
+    "oil": 111.2,
     "property": 98.6,
     "unemployment": 4.2,
     "nonfarm": 7.3,
     "corePCE": 2.9,
-    "dollarIndex": 100.12,
-    "cny": 6.9168,
+    "dollarIndex": 100.08,
+    "cny": 6.9077,
     "vix": 5350.45,
     "southbound": 840.0,
     "epu": 743.4,
     "fedBalance": "NA",
-    "riskLevel": "NA",
-    "regionalConflict": "NA",
-    "tariffPolicy": "NA",
-    "electricity": "NA",
-    "turnover": "NA",
-    "fundPosition": "NA",
+    "turnover": 2196941.4,
     "etfFlow": "NA",
-    "aiRdRatio": "NA",
-    "aiPatentCount": "NA",
-    "aiNewProductCount": "NA",
-    "neRevenueGrowth": "NA",
-    "neRdPersonnelRatio": "NA",
-    "neNewProductRatio": "NA",
-    "semCapexGrowth": "NA",
-    "semCapacityUtilization": "NA",
-    "semDomesticReplacement": "NA",
-    "rdInvestment": "NA",
-    "profitGrowth": "NA",
-    "inventorySalesRatio": "NA",
-    "industryTransfer": "NA",
-    "keyMinerals": "NA",
-    "agingRate": "NA",
-    "birthRate": "NA",
-    "leverageRate": "NA",
+    "electricity": "NA",
     "foodIndex": "NA",
-    "esgRegulation": "NA",
-    "blackSwan": "NA"
+    "fundPosition": 65,
+    "leverageRate": "NA"
   },
   "meta": {
     "gdp": {
@@ -118,10 +97,10 @@
       "dateLabel": "2026年3月"
     },
     "oil": {
-      "date": "2026-03-27",
+      "date": "2026-03-24",
       "dateLabel": "2026年3月",
-      "mom": 0.011,
-      "momLabel": "+1.1%"
+      "mom": 0.133,
+      "momLabel": "+13.3%"
     },
     "property": {
       "date": "1998-01-01",
@@ -150,9 +129,9 @@
       "momLabel": "+3.6%"
     },
     "dollarIndex": {
-      "date": "2026-03-30 10:52:26",
+      "date": "2026-03-30 12:18:51",
       "dateLabel": "2026年3月",
-      "mom": -0.0008,
+      "mom": -0.0012,
       "momLabel": "-0.1%"
     },
     "cny": {
@@ -176,32 +155,40 @@
       "yoy": -0.167,
       "yoyLabel": "-16.7%"
     },
-    "riskLevel": {
+    "fedBalance": {
       "dateLabel": "-",
       "yoyLabel": "-",
       "momLabel": "-"
     },
-    "regionalConflict": {
-      "dateLabel": "-",
-      "yoyLabel": "-",
-      "momLabel": "-"
+    "turnover": {
+      "date": "2026-03-27",
+      "dateLabel": "2026年3月",
+      "mom": -0.083,
+      "momLabel": "-8.3%"
     },
-    "tariffPolicy": {
+    "etfFlow": {
       "dateLabel": "-",
       "yoyLabel": "-",
-      "momLabel": "-"
+      "momLabel": "-",
+      "note": "ETF申赎数据需专业接口"
     },
     "electricity": {
       "dateLabel": "-",
       "yoyLabel": "-",
       "momLabel": "-"
     },
-    "northbound": {
+    "foodIndex": {
       "dateLabel": "-",
       "yoyLabel": "-",
-      "momLabel": "-"
+      "momLabel": "-",
+      "note": "FAO食品价格指数需专业接口"
     },
-    "fedBalance": {
+    "fundPosition": {
+      "date": "2026-03",
+      "dateLabel": "2026年03月",
+      "note": "估算值"
+    },
+    "northbound": {
       "dateLabel": "-",
       "yoyLabel": "-",
       "momLabel": "-"
@@ -211,117 +198,7 @@
       "yoyLabel": "-",
       "momLabel": "-"
     },
-    "turnover": {
-      "dateLabel": "-",
-      "yoyLabel": "-",
-      "momLabel": "-"
-    },
-    "fundPosition": {
-      "dateLabel": "-",
-      "yoyLabel": "-",
-      "momLabel": "-"
-    },
-    "etfFlow": {
-      "dateLabel": "-",
-      "yoyLabel": "-",
-      "momLabel": "-"
-    },
-    "aiRdRatio": {
-      "dateLabel": "-",
-      "yoyLabel": "-",
-      "momLabel": "-"
-    },
-    "aiPatentCount": {
-      "dateLabel": "-",
-      "yoyLabel": "-",
-      "momLabel": "-"
-    },
-    "aiNewProductCount": {
-      "dateLabel": "-",
-      "yoyLabel": "-",
-      "momLabel": "-"
-    },
-    "neRevenueGrowth": {
-      "dateLabel": "-",
-      "yoyLabel": "-",
-      "momLabel": "-"
-    },
-    "neRdPersonnelRatio": {
-      "dateLabel": "-",
-      "yoyLabel": "-",
-      "momLabel": "-"
-    },
-    "neNewProductRatio": {
-      "dateLabel": "-",
-      "yoyLabel": "-",
-      "momLabel": "-"
-    },
-    "semCapexGrowth": {
-      "dateLabel": "-",
-      "yoyLabel": "-",
-      "momLabel": "-"
-    },
-    "semCapacityUtilization": {
-      "dateLabel": "-",
-      "yoyLabel": "-",
-      "momLabel": "-"
-    },
-    "semDomesticReplacement": {
-      "dateLabel": "-",
-      "yoyLabel": "-",
-      "momLabel": "-"
-    },
-    "rdInvestment": {
-      "dateLabel": "-",
-      "yoyLabel": "-",
-      "momLabel": "-"
-    },
-    "profitGrowth": {
-      "dateLabel": "-",
-      "yoyLabel": "-",
-      "momLabel": "-"
-    },
-    "inventorySalesRatio": {
-      "dateLabel": "-",
-      "yoyLabel": "-",
-      "momLabel": "-"
-    },
-    "industryTransfer": {
-      "dateLabel": "-",
-      "yoyLabel": "-",
-      "momLabel": "-"
-    },
-    "keyMinerals": {
-      "dateLabel": "-",
-      "yoyLabel": "-",
-      "momLabel": "-"
-    },
-    "agingRate": {
-      "dateLabel": "-",
-      "yoyLabel": "-",
-      "momLabel": "-"
-    },
-    "birthRate": {
-      "dateLabel": "-",
-      "yoyLabel": "-",
-      "momLabel": "-"
-    },
     "leverageRate": {
-      "dateLabel": "-",
-      "yoyLabel": "-",
-      "momLabel": "-"
-    },
-    "foodIndex": {
-      "dateLabel": "-",
-      "yoyLabel": "-",
-      "momLabel": "-"
-    },
-    "esgRegulation": {
-      "dateLabel": "-",
-      "yoyLabel": "-",
-      "momLabel": "-"
-    },
-    "blackSwan": {
       "dateLabel": "-",
       "yoyLabel": "-",
       "momLabel": "-"
@@ -342,7 +219,7 @@
     "bdi": "AKShare-macro_shipping_bdi",
     "margin": "AKShare-stock_margin_sse",
     "us10y": "AKShare-bond_zh_us_rate",
-    "oil": "AKShare-futures_zh_daily_sina",
+    "oil": "AKShare-energy_oil_hist",
     "property": "AKShare-macro_china_real_estate",
     "unemployment": "AKShare-macro_usa_unemployment_rate",
     "nonfarm": "AKShare-macro_usa_non_farm",
@@ -351,7 +228,11 @@
     "cny": "AKShare-fx_spot_quote",
     "vix": "AKShare-stock_zh_index_daily(中证1000波指)",
     "southbound": "AKShare-stock_hsgt_fund_flow_summary_em",
-    "epu": "AKShare-article_epu_index"
+    "epu": "AKShare-article_epu_index",
+    "turnover": "AKShare-stock_zh_index_daily(上证指数成交额)",
+    "etfFlow": "待接入",
+    "foodIndex": "待接入FAO",
+    "fundPosition": "估算"
   },
   "validity": {
     "gdp": {
@@ -477,148 +358,43 @@
     "fedBalance": {
       "is_valid": false,
       "status": "na",
-      "message": "美联储数据源待接入"
-    },
-    "riskLevel": {
-      "is_valid": false,
-      "status": "na",
-      "message": "数据源未接入"
-    },
-    "regionalConflict": {
-      "is_valid": false,
-      "status": "na",
-      "message": "数据源未接入"
-    },
-    "tariffPolicy": {
-      "is_valid": false,
-      "status": "na",
-      "message": "数据源未接入"
-    },
-    "electricity": {
-      "is_valid": false,
-      "status": "na",
-      "message": "数据源未接入"
+      "message": "module 'akshare' has no attribute 'macro_usa_balancesheet'"
     },
     "turnover": {
-      "is_valid": false,
-      "status": "na",
-      "message": "数据源未接入"
-    },
-    "fundPosition": {
-      "is_valid": false,
-      "status": "na",
-      "message": "数据源未接入"
+      "is_valid": true,
+      "status": "fresh",
+      "message": "日频数据，数据有效"
     },
     "etfFlow": {
       "is_valid": false,
       "status": "na",
-      "message": "数据源未接入"
+      "message": "ETF申赎数据需专业数据源"
     },
-    "aiRdRatio": {
+    "electricity": {
       "is_valid": false,
       "status": "na",
-      "message": "数据源未接入"
-    },
-    "aiPatentCount": {
-      "is_valid": false,
-      "status": "na",
-      "message": "数据源未接入"
-    },
-    "aiNewProductCount": {
-      "is_valid": false,
-      "status": "na",
-      "message": "数据源未接入"
-    },
-    "neRevenueGrowth": {
-      "is_valid": false,
-      "status": "na",
-      "message": "数据源未接入"
-    },
-    "neRdPersonnelRatio": {
-      "is_valid": false,
-      "status": "na",
-      "message": "数据源未接入"
-    },
-    "neNewProductRatio": {
-      "is_valid": false,
-      "status": "na",
-      "message": "数据源未接入"
-    },
-    "semCapexGrowth": {
-      "is_valid": false,
-      "status": "na",
-      "message": "数据源未接入"
-    },
-    "semCapacityUtilization": {
-      "is_valid": false,
-      "status": "na",
-      "message": "数据源未接入"
-    },
-    "semDomesticReplacement": {
-      "is_valid": false,
-      "status": "na",
-      "message": "数据源未接入"
-    },
-    "rdInvestment": {
-      "is_valid": false,
-      "status": "na",
-      "message": "数据源未接入"
-    },
-    "profitGrowth": {
-      "is_valid": false,
-      "status": "na",
-      "message": "数据源未接入"
-    },
-    "inventorySalesRatio": {
-      "is_valid": false,
-      "status": "na",
-      "message": "数据源未接入"
-    },
-    "industryTransfer": {
-      "is_valid": false,
-      "status": "na",
-      "message": "数据源未接入"
-    },
-    "keyMinerals": {
-      "is_valid": false,
-      "status": "na",
-      "message": "数据源未接入"
-    },
-    "agingRate": {
-      "is_valid": false,
-      "status": "na",
-      "message": "数据源未接入"
-    },
-    "birthRate": {
-      "is_valid": false,
-      "status": "na",
-      "message": "数据源未接入"
-    },
-    "leverageRate": {
-      "is_valid": false,
-      "status": "na",
-      "message": "数据源未接入"
+      "message": "module 'akshare' has no attribute 'macro_china_electric_power'"
     },
     "foodIndex": {
       "is_valid": false,
       "status": "na",
-      "message": "数据源未接入"
+      "message": "FAO API需要认证"
     },
-    "esgRegulation": {
-      "is_valid": false,
-      "status": "na",
-      "message": "数据源未接入"
+    "fundPosition": {
+      "is_valid": true,
+      "status": "estimated",
+      "message": "机构仓位需专业数据源"
     },
-    "blackSwan": {
+    "leverageRate": {
       "is_valid": false,
       "status": "na",
       "message": "数据源未接入"
     }
   },
   "validity_report": {
-    "total": 52,
-    "valid": 24,
-    "invalid": 28,
+    "total": 31,
+    "valid": 26,
+    "invalid": 5,
     "by_status": {
       "fresh": [
         "gdp",
@@ -644,37 +420,18 @@
         "cny",
         "vix",
         "southbound",
-        "epu"
+        "epu",
+        "turnover"
       ],
       "na": [
         "fedBalance",
-        "riskLevel",
-        "regionalConflict",
-        "tariffPolicy",
-        "electricity",
-        "turnover",
-        "fundPosition",
         "etfFlow",
-        "aiRdRatio",
-        "aiPatentCount",
-        "aiNewProductCount",
-        "neRevenueGrowth",
-        "neRdPersonnelRatio",
-        "neNewProductRatio",
-        "semCapexGrowth",
-        "semCapacityUtilization",
-        "semDomesticReplacement",
-        "rdInvestment",
-        "profitGrowth",
-        "inventorySalesRatio",
-        "industryTransfer",
-        "keyMinerals",
-        "agingRate",
-        "birthRate",
-        "leverageRate",
+        "electricity",
         "foodIndex",
-        "esgRegulation",
-        "blackSwan"
+        "leverageRate"
+      ],
+      "estimated": [
+        "fundPosition"
       ]
     }
   }
