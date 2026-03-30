@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-30T12:19:26.830933",
+  "timestamp": "2026-03-30T19:04:24.626489",
   "data": {
     "gdp": 5.0,
     "cpi": 1.3,
@@ -9,26 +9,26 @@
     "interest": 3.0,
     "retail": 2.8,
     "socialFinance": -2.1,
-    "export": 8.7,
+    "export": 7.2,
     "m2": 8.8,
     "northbound": 0.0,
-    "bdi": 1317.0,
+    "bdi": 2031.0,
     "margin": 8016.0,
     "us10y": 4.44,
     "oil": 111.2,
-    "property": 98.6,
+    "property": 91.5,
     "unemployment": 4.2,
     "nonfarm": 7.3,
     "corePCE": 2.9,
-    "dollarIndex": 100.08,
-    "cny": 6.9077,
-    "vix": 5350.45,
+    "dollarIndex": "NA",
+    "cny": 6.9103,
+    "vix": 5348.12,
     "southbound": 840.0,
     "epu": 743.4,
     "fedBalance": "NA",
-    "turnover": 2196941.4,
+    "turnover": 595.6,
     "etfFlow": "NA",
-    "electricity": "NA",
+    "electricity": 15.3,
     "foodIndex": "NA",
     "fundPosition": 65,
     "leverageRate": "NA"
@@ -37,14 +37,12 @@
     "gdp": {
       "date": "2025年第1-4季度",
       "dateLabel": "2025年第1-4季度",
-      "yoy": -0.038,
-      "yoyLabel": "-3.8%"
+      "yoy": null,
+      "yoyLabel": "-"
     },
     "cpi": {
       "date": "2026年02月份",
-      "dateLabel": "2026年02月份",
-      "yoy": 2.857,
-      "yoyLabel": "+285.7%"
+      "dateLabel": "2026年02月份"
     },
     "pmi": {
       "date": "2026年02月份",
@@ -57,8 +55,8 @@
     "ppi": {
       "date": "2026年02月份",
       "dateLabel": "2026年02月份",
-      "yoy": 0.591,
-      "yoyLabel": "+59.1%"
+      "yoy": null,
+      "yoyLabel": "-"
     },
     "interest": {
       "date": "2026-03-20",
@@ -69,28 +67,28 @@
     "retail": {
       "date": "2026年02月份",
       "dateLabel": "2026年02月份",
-      "yoy": -0.243,
-      "yoyLabel": "-24.3%"
+      "yoy": null,
+      "yoyLabel": "-"
     },
     "socialFinance": {
       "date": "2026年02月份",
       "dateLabel": "2026年02月份",
-      "yoy": 0.655,
-      "yoyLabel": "+65.5%"
+      "yoy": null,
+      "yoyLabel": "-"
     },
     "export": {
-      "date": "1982-02-01",
-      "dateLabel": "1982年2月"
+      "date": "2025-08-07",
+      "dateLabel": "2025年8月"
     },
     "m2": {
-      "date": "中国M2货币供应年率报告",
-      "dateLabel": "中国M2货币供应年率报告",
+      "date": "2025-08-13",
+      "dateLabel": "2025年8月",
       "mom": 0.0,
       "momLabel": "+0.0%"
     },
     "bdi": {
-      "date": "1988-10-19",
-      "dateLabel": "1988年10月"
+      "date": "2026-03-30",
+      "dateLabel": "2026年3月"
     },
     "us10y": {
       "date": "2026-03-27",
@@ -103,47 +101,44 @@
       "momLabel": "+13.3%"
     },
     "property": {
-      "date": "1998-01-01",
-      "dateLabel": "1998年1月",
-      "yoy": -0.004,
-      "yoyLabel": "-0.4%"
+      "date": "2025-12-01",
+      "dateLabel": "2025年12月",
+      "yoy": null,
+      "yoyLabel": "-"
     },
     "unemployment": {
-      "date": "美国失业率",
-      "dateLabel": "美国失业率",
+      "date": "2025-08-01",
+      "dateLabel": "2025年8月",
       "mom": 0.0,
       "momLabel": "+0.0%"
     },
     "nonfarm": {
-      "date": "美国非农就业人数",
-      "dateLabel": "美国非农就业人数",
+      "date": "2025-08-01",
+      "dateLabel": "2025年8月",
       "mom": 0.0,
       "momLabel": "+0.0%"
     },
     "corePCE": {
-      "date": "美国核心PCE物价指数年率",
-      "dateLabel": "美国核心PCE物价指数年率",
-      "yoy": 0.0,
-      "yoyLabel": "+0.0%",
+      "date": "2025-08-29",
+      "dateLabel": "2025年8月",
+      "yoy": null,
+      "yoyLabel": "-",
       "mom": 0.036,
       "momLabel": "+3.6%"
     },
     "dollarIndex": {
-      "date": "2026-03-30 12:18:51",
-      "dateLabel": "2026年3月",
-      "mom": -0.0012,
-      "momLabel": "-0.1%"
+      "dateLabel": "-",
+      "yoyLabel": "-",
+      "momLabel": "-"
     },
     "cny": {
       "date": "2026-03-30",
       "dateLabel": "2026年03月30日"
     },
     "vix": {
-      "date": "2026-03-27",
+      "date": "2026-03-30",
       "dateLabel": "2026年3月",
-      "note": "中证1000波动率指数（非美国VIX）",
-      "mom": -0.002,
-      "momLabel": "-0.2%"
+      "note": "中证1000波动率指数（非美国VIX）"
     },
     "southbound": {
       "date": "2026-03-30",
@@ -152,8 +147,8 @@
     "epu": {
       "date": "2023年11月",
       "dateLabel": "2023年11月",
-      "yoy": -0.167,
-      "yoyLabel": "-16.7%"
+      "yoy": null,
+      "yoyLabel": "-"
     },
     "fedBalance": {
       "dateLabel": "-",
@@ -161,10 +156,10 @@
       "momLabel": "-"
     },
     "turnover": {
-      "date": "2026-03-27",
+      "date": "2026-03-30",
       "dateLabel": "2026年3月",
-      "mom": -0.083,
-      "momLabel": "-8.3%"
+      "mom": 0.061,
+      "momLabel": "+6.1%"
     },
     "etfFlow": {
       "dateLabel": "-",
@@ -173,9 +168,10 @@
       "note": "ETF申赎数据需专业接口"
     },
     "electricity": {
-      "dateLabel": "-",
-      "yoyLabel": "-",
-      "momLabel": "-"
+      "date": "2003.12",
+      "dateLabel": "2003.12",
+      "yoy": null,
+      "yoyLabel": "-"
     },
     "foodIndex": {
       "dateLabel": "-",
@@ -224,13 +220,13 @@
     "unemployment": "AKShare-macro_usa_unemployment_rate",
     "nonfarm": "AKShare-macro_usa_non_farm",
     "corePCE": "AKShare-macro_usa_core_pce_price",
-    "dollarIndex": "AKShare-index_global_spot_em",
     "cny": "AKShare-fx_spot_quote",
     "vix": "AKShare-stock_zh_index_daily(中证1000波指)",
     "southbound": "AKShare-stock_hsgt_fund_flow_summary_em",
     "epu": "AKShare-article_epu_index",
     "turnover": "AKShare-stock_zh_index_daily(上证指数成交额)",
     "etfFlow": "待接入",
+    "electricity": "AKShare-macro_china_society_electricity",
     "foodIndex": "待接入FAO",
     "fundPosition": "估算"
   },
@@ -331,9 +327,9 @@
       "message": "月频数据，数据有效"
     },
     "dollarIndex": {
-      "is_valid": true,
-      "status": "fresh",
-      "message": "日频数据，数据有效"
+      "is_valid": false,
+      "status": "error",
+      "message": "HTTPSConnectionPool(host='push2.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/clist/get?np=2&fltt=1&invt=2&fs=i%3A1.000001%2Ci%3A0.399001%2Ci%3A0.399005%2Ci%3A0.399006%2Ci%3A1.000300%2Ci%3A100.HSI%2Ci%3A100.HSCEI%2Ci%3A124.HSCCI%2Ci%3A100.TWII%2Ci%3A100.N225%2Ci%3A100.KOSPI200%2Ci%3A100.KS11%2Ci%3A100.STI%2Ci%3A100.SENSEX%2Ci%3A100.KLSE%2Ci%3A100.SET%2Ci%3A100.PSI%2Ci%3A100.KSE100%2Ci%3A100.VNINDEX%2Ci%3A100.JKSE%2Ci%3A100.CSEALL%2Ci%3A100.SX5E%2Ci%3A100.FTSE%2Ci%3A100.MCX%2Ci%3A100.AXX%2Ci%3A100.FCHI%2Ci%3A100.GDAXI%2Ci%3A100.RTS%2Ci%3A100.IBEX%2Ci%3A100.PSI20%2Ci%3A100.OMXC20%2Ci%3A100.BFX%2Ci%3A100.AEX%2Ci%3A100.WIG%2Ci%3A100.OMXSPI%2Ci%3A100.SSMI%2Ci%3A100.HEX%2Ci%3A100.OSEBX%2Ci%3A100.ATX%2Ci%3A100.MIB%2Ci%3A100.ASE%2Ci%3A100.ICEXI%2Ci%3A100.PX%2Ci%3A100.ISEQ%2Ci%3A100.DJIA%2Ci%3A100.SPX%2Ci%3A100.NDX%2Ci%3A100.TSX%2Ci%3A100.BVSP%2Ci%3A100.MXX%2Ci%3A100.AS51%2Ci%3A100.AORD%2Ci%3A100.NZ50%2Ci%3A100.UDI%2Ci%3A100.BDI%2Ci%3A100.CRB&fields=f12%2Cf13%2Cf14%2Cf292%2Cf1%2Cf2%2Cf4%2Cf3%2Cf152%2Cf17%2Cf18%2Cf15%2Cf16%2Cf7%2Cf124&fid=f3&pn=1&pz=200&po=1&dect=1&wbp2u=%7C0%7C0%7C0%7Cweb (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))"
     },
     "cny": {
       "is_valid": true,
@@ -358,7 +354,7 @@
     "fedBalance": {
       "is_valid": false,
       "status": "na",
-      "message": "module 'akshare' has no attribute 'macro_usa_balancesheet'"
+      "message": "FRED API错误: 400"
     },
     "turnover": {
       "is_valid": true,
@@ -371,9 +367,9 @@
       "message": "ETF申赎数据需专业数据源"
     },
     "electricity": {
-      "is_valid": false,
-      "status": "na",
-      "message": "module 'akshare' has no attribute 'macro_china_electric_power'"
+      "is_valid": true,
+      "status": "fresh",
+      "message": "月频数据，数据有效"
     },
     "foodIndex": {
       "is_valid": false,
@@ -416,17 +412,19 @@
         "unemployment",
         "nonfarm",
         "corePCE",
-        "dollarIndex",
         "cny",
         "vix",
         "southbound",
         "epu",
-        "turnover"
+        "turnover",
+        "electricity"
+      ],
+      "error": [
+        "dollarIndex"
       ],
       "na": [
         "fedBalance",
         "etfFlow",
-        "electricity",
         "foodIndex",
         "leverageRate"
       ],
