@@ -40,21 +40,25 @@ function App() {
       // 从defaultData深拷贝
       const result = JSON.parse(JSON.stringify(defaultData));
       
-      // 40指标v2.0：真实数据源的字段
+      // 30指标v3.0：真实数据源的字段（精简版）
       const realDataFields = [
         // 维度1: 宏观经济（11个）
         'gdp', 'cpi', 'pmi', 'servicePmi', 'ppi', 'interest', 'retail', 'socialFinance', 'export', 'm2', 'unemployment',
         'nonfarm', 'corePCE',
-        // 维度2: 地缘政治（1个有数据）
+        // 维度2: 地缘政治（1个）
         'epu',
-        // 维度4: 流动性（5个有数据）
-        'northbound', 'southbound', 'dollarIndex', 'cny', 'us10y',
-        // 维度5: 市场情绪（2个有数据）
-        'vix', 'margin',
-        // 维度6: 供应链（2个有数据）
-        'oil', 'bdi',
-        // 其他
-        'property',
+        // 维度3: 生产生活（3个）
+        'electricity', 'retail', 'property',
+        // 维度4: 流动性（6个有数据）
+        'northbound', 'southbound', 'fedBalance', 'dollarIndex', 'cny', 'us10y',
+        // 维度5: 市场情绪（5个有数据）
+        'vix', 'margin', 'turnover', 'fundPosition', 'etfFlow',
+        // 维度6: 供应链（3个有数据）
+        'oil', 'bdi', 'export',
+        // 维度7: 人口结构（1个）
+        'leverageRate',
+        // 维度8: 尾部风险（1个）
+        'foodIndex',
       ];
       const globeFields = ['oil', 'bdi', 'us10y', 'dollarIndex', 'epu'];
       const usaFields = ['vix', 'unemployment', 'nonfarm', 'corePCE'];

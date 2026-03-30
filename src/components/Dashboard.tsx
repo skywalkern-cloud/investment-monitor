@@ -198,15 +198,12 @@ export const Dashboard: React.FC<DashboardProps> = ({ data, lastUpdate }) => {
           </DimensionCard>
         </motion.div>
 
-        {/* 维度2: 地缘政治（4个）🌐 */}
+        {/* 维度2: 地缘政治（1个）🌐 */}
         <motion.div variants={itemVariants}>
           <DimensionCard title="地缘政治" icon="🌍" alertStatus={getDimensionStatus(data, 'geo')}>
             <CountrySection flag="🌐" label="全球">
               <LabeledMetricRow label="EPU指数" value={formatValue(data.epu.value)} country={data.epu.country} trend="neutral" />
               <ProgressBar value={getNum(data.epu)} max={400} status={getDimensionStatus(data, 'geo')} />
-              <LabeledMetricRow label="风险等级" value={formatValue(data.riskLevel.value)} country={data.riskLevel.country} trend="neutral" />
-              <LabeledMetricRow label="区域冲突" value={formatValue(data.regionalConflict.value)} country={data.regionalConflict.country} trend="neutral" />
-              <LabeledMetricRow label="关税动态" value={formatValue(data.tariffPolicy.value)} country={data.tariffPolicy.country} trend="neutral" />
             </CountrySection>
           </DimensionCard>
         </motion.div>
@@ -279,14 +276,12 @@ export const Dashboard: React.FC<DashboardProps> = ({ data, lastUpdate }) => {
           </DimensionCard>
         </motion.div>
 
-        {/* 维度6: 供应链（5个）🚢 */}
+        {/* 维度6: 供应链（3个）🚢 */}
         <motion.div variants={itemVariants}>
           <DimensionCard title="供应链" icon="🚢" alertStatus={getDimensionStatus(data, 'supply')}>
             {/* 🇨🇳 中国 */}
             <CountrySection flag="🇨🇳" label="中国">
               <LabeledMetricRow label="中国出口" value={formatValue(data.export.value)} country={data.export.country} unit="%" trend={getNum(data.export) > 0 ? 'up' : 'down'} />
-              <LabeledMetricRow label="产业链转移" value={formatValue(data.industryTransfer.value)} country={data.industryTransfer.country} trend="neutral" />
-              <LabeledMetricRow label="关键矿产" value={formatValue(data.keyMinerals.value)} country={data.keyMinerals.country} trend="neutral" />
             </CountrySection>
             {/* 🌐 全球 */}
             <CountrySection flag="🌐" label="全球">
@@ -304,25 +299,21 @@ export const Dashboard: React.FC<DashboardProps> = ({ data, lastUpdate }) => {
           </DimensionCard>
         </motion.div>
 
-        {/* 维度7: 人口结构（3个）👥 */}
+        {/* 维度7: 人口结构（1个）👥 */}
         <motion.div variants={itemVariants}>
           <DimensionCard title="人口结构" icon="👥" alertStatus={getDimensionStatus(data, 'population')}>
             <CountrySection flag="🇨🇳" label="中国">
-              <LabeledMetricRow label="老龄化率" value={formatValue(data.agingRate.value)} country={data.agingRate.country} trend="neutral" />
-              <LabeledMetricRow label="出生率" value={formatValue(data.birthRate.value)} country={data.birthRate.country} unit="‰" trend="neutral" />
               <LabeledMetricRow label="居民杠杆率" value={formatValue(data.leverageRate.value)} country={data.leverageRate.country} unit="%" trend="neutral" />
             </CountrySection>
           </DimensionCard>
         </motion.div>
 
-        {/* 维度8: 尾部风险（3个）⚠️ */}
+        {/* 维度8: 尾部风险（1个）⚠️ */}
         <motion.div variants={itemVariants}>
           <DimensionCard title="尾部风险" icon="⚠️" alertStatus={getDimensionStatus(data, 'tail')}>
             <CountrySection flag="🌐" label="全球">
               <LabeledMetricRow label="粮食价格指数" value={formatValue(data.foodIndex.value)} country={data.foodIndex.country} trend="neutral" />
               <ProgressBar value={getNum(data.foodIndex)} max={150} status={getDimensionStatus(data, 'tail')} />
-              <LabeledMetricRow label="ESG监管" value={formatValue(data.esgRegulation.value)} country={data.esgRegulation.country} trend="neutral" />
-              <LabeledMetricRow label="黑天鹅事件" value={formatValue(data.blackSwan.value)} country={data.blackSwan.country} trend="neutral" />
             </CountrySection>
           </DimensionCard>
         </motion.div>

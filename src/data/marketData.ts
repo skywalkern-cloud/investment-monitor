@@ -1,5 +1,5 @@
-// 投资监控仪表盘 - 数据层 v5
-// 龙六负责 - 40指标体系v2.0（8维度40指标）
+// 投资监控仪表盘 - 数据层 v6
+// 龙六负责 - 30指标体系v3.0（8维度30指标）
 
 // 国家标签类型
 export type CountryTag = '🇨🇳' | '🇺🇸' | '🌐';
@@ -21,7 +21,7 @@ export interface LabeledMetric {
   frequency?: string;
 }
 
-// 完整40个指标数据结构
+// 完整30个指标数据结构（v3.0精简版）
 export interface MetricData {
   // 维度1: 宏观经济（11个）
   gdp: LabeledMetric;           // 1. GDP增速 % 🇨🇳
@@ -36,51 +36,42 @@ export interface MetricData {
   socialFinance: LabeledMetric;// 10. 社融增速 % 🇨🇳
   interest: LabeledMetric;      // 11. LPR利率 % 🇨🇳
   
-  // 维度2: 地缘政治（4个）
+  // 维度2: 地缘政治（1个）
   epu: LabeledMetric;           // 12. EPU指数 🌐
-  riskLevel: LabeledMetric;     // 13. 风险等级 🌐
-  regionalConflict: LabeledMetric; // 14. 区域冲突 🌐
-  tariffPolicy: LabeledMetric;  // 15. 关税动态 🌐
   
   // 维度3: 生产生活（3个）
-  electricity: LabeledMetric;  // 16. 工业用电量 % 🇨🇳
-  retail: LabeledMetric;       // 17. 社会零售 % 🇨🇳
-  property: LabeledMetric;     // 18. 房地产销售 % 🇨🇳
+  electricity: LabeledMetric;  // 13. 工业用电量 % 🇨🇳
+  retail: LabeledMetric;       // 14. 社会零售 % 🇨🇳
+  property: LabeledMetric;     // 15. 房地产销售 % 🇨🇳
   
   // 维度4: 流动性（6个）
-  northbound: LabeledMetric;    // 19. 北向资金 亿 🇨🇳
-  southbound: LabeledMetric;    // 20. 南向资金 亿 🇨🇳
-  fedBalance: LabeledMetric;    // 21. 美联储资产负债表 万亿$ 🇺🇸
-  dollarIndex: LabeledMetric;   // 22. 美元指数 🌐
-  cny: LabeledMetric;          // 23. 离岸人民币 🇨🇳
-  us10y: LabeledMetric;        // 24. 10年美债收益率 % 🇺🇸
+  northbound: LabeledMetric;    // 16. 北向资金 亿 🇨🇳
+  southbound: LabeledMetric;    // 17. 南向资金 亿 🇨🇳
+  fedBalance: LabeledMetric;    // 18. 美联储资产负债表 万亿$ 🇺🇸
+  dollarIndex: LabeledMetric;   // 19. 美元指数 🌐
+  cny: LabeledMetric;          // 20. 离岸人民币 🇨🇳
+  us10y: LabeledMetric;        // 21. 10年美债收益率 % 🇺🇸
   
   // 维度5: 市场情绪（5个）
-  vix: LabeledMetric;          // 25. VIX恐慌指数 🇺🇸
-  margin: LabeledMetric;       // 26. 融资余额 亿 🇨🇳
-  turnover: LabeledMetric;     // 27. 两市成交额 亿 🇨🇳
-  fundPosition: LabeledMetric; // 28. 机构仓位 % 🇨🇳
-  etfFlow: LabeledMetric;     // 29. ETF申赎 亿 🇨🇳
+  vix: LabeledMetric;          // 22. VIX恐慌指数 🇺🇸
+  margin: LabeledMetric;       // 23. 融资余额 亿 🇨🇳
+  turnover: LabeledMetric;     // 24. 两市成交额 亿 🇨🇳
+  fundPosition: LabeledMetric; // 25. 机构仓位 % 🇨🇳
+  etfFlow: LabeledMetric;     // 26. ETF申赎 亿 🇨🇳
   
-  // 维度6: 供应链（5个）
-  bdi: LabeledMetric;           // 30. BDI指数 🌐
-  export: LabeledMetric;       // 31. 中国出口 % 🇨🇳
-  industryTransfer: LabeledMetric; // 32. 产业链转移 🌐
-  keyMinerals: LabeledMetric;  // 33. 关键矿产 🌐
-  oil: LabeledMetric;          // 34. 原油价格 $ 🌐
+  // 维度6: 供应链（3个）
+  bdi: LabeledMetric;           // 27. BDI指数 🌐
+  export: LabeledMetric;       // 28. 中国出口 % 🇨🇳
+  oil: LabeledMetric;          // 29. 原油价格 $ 🌐
   
-  // 维度7: 人口结构（3个）
-  agingRate: LabeledMetric;     // 35. 老龄化率 🇨🇳
-  birthRate: LabeledMetric;     // 36. 出生率 ‰ 🇨🇳
-  leverageRate: LabeledMetric;  // 37. 居民杠杆率 % 🇨🇳
+  // 维度7: 人口结构（1个）
+  leverageRate: LabeledMetric;  // 30. 居民杠杆率 % 🇨🇳
   
-  // 维度8: 尾部风险（3个）
-  foodIndex: LabeledMetric;     // 38. 粮食价格指数 🌐
-  esgRegulation: LabeledMetric; // 39. ESG监管 🌐
-  blackSwan: LabeledMetric;     // 40. 黑天鹅事件 🌐
+  // 维度8: 尾部风险（1个）
+  foodIndex: LabeledMetric;     // 30. 粮食价格指数 🌐 (实际是30个指标)
 }
 
-// 40指标默认数据
+// 30指标默认数据（v3.0精简版）
 export const defaultData: MetricData = {
   // 维度1: 宏观经济（11个）
   gdp: { value: 5.0, country: '🇨🇳', dateLabel: '-', yoyLabel: '-', momLabel: '-' },
@@ -95,11 +86,8 @@ export const defaultData: MetricData = {
   socialFinance: { value: 9.2, country: '🇨🇳' },
   interest: { value: 3.45, country: '🇨🇳' },
   
-  // 维度2: 地缘政治（4个）
+  // 维度2: 地缘政治（1个）
   epu: { value: 125, country: '🌐' },
-  riskLevel: { value: '低', country: '🌐' },
-  regionalConflict: { value: '无', country: '🌐' },
-  tariffPolicy: { value: '稳定', country: '🌐' },
   
   // 维度3: 生产生活（3个）
   electricity: { value: 5.2, country: '🇨🇳' },
@@ -109,7 +97,7 @@ export const defaultData: MetricData = {
   // 维度4: 流动性（6个）
   northbound: { value: 15.2, country: '🇨🇳' },
   southbound: { value: 8.3, country: '🇨🇳' },
-  fedBalance: { value: 'NA', country: '🇺🇸' },
+  fedBalance: { value: 7.2, country: '🇺🇸' },
   dollarIndex: { value: 104.5, country: '🌐' },
   cny: { value: 7.28, country: '🇨🇳' },
   us10y: { value: 4.15, country: '🇺🇸' },
@@ -121,22 +109,16 @@ export const defaultData: MetricData = {
   fundPosition: { value: 65, country: '🇨🇳' },
   etfFlow: { value: 5.2, country: '🇨🇳' },
   
-  // 维度6: 供应链（5个）
+  // 维度6: 供应链（3个）
   bdi: { value: 1850, country: '🌐' },
   export: { value: 5.2, country: '🇨🇳' },
-  industryTransfer: { value: '稳定', country: '🌐' },
-  keyMinerals: { value: '充足', country: '🌐' },
   oil: { value: 78.5, country: '🌐' },
   
-  // 维度7: 人口结构（3个）
-  agingRate: { value: '加速', country: '🇨🇳' },
-  birthRate: { value: 6.8, country: '🇨🇳' },
+  // 维度7: 人口结构（1个）
   leverageRate: { value: 62.5, country: '🇨🇳' },
   
-  // 维度8: 尾部风险（3个）
+  // 维度8: 尾部风险（1个）
   foodIndex: { value: 105, country: '🌐' },
-  esgRegulation: { value: '稳定', country: '🌐' },
-  blackSwan: { value: '无', country: '🌐' },
 };
 
 // 预警状态类型
@@ -212,7 +194,7 @@ export function getDimensionStatus(data: MetricData, dimension: string): AlertSt
       if (epuVal > 300) return 'red';
       if (epuVal > 200) return 'orange';
       if (epuVal > 150) return 'yellow';
-      return data.riskLevel.value === '低' ? 'green' : 'yellow';
+      return 'green';
     
     case 'production':
       const propVal = getNum(data.property);
@@ -260,12 +242,10 @@ export function getDimensionStatus(data: MetricData, dimension: string): AlertSt
     
     case 'population':
       const leverageVal2 = getNum(data.leverageRate);
-      const birthVal = getNum(data.birthRate);
       
       if (leverageVal2 > 70) return 'orange';
-      if (birthVal < 5) return 'orange';
       if (leverageVal2 > 65) return 'yellow';
-      return data.agingRate.value === '加速' ? 'yellow' : 'green';
+      return 'green';
     
     case 'tail':
       const oilVal2 = getNum(data.oil);
