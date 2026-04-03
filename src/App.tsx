@@ -2,253 +2,138 @@ import { useState, useEffect } from 'react'
 import { useMarketData, MarketDataSkeleton } from './hooks/useMarketData'
 import './index.css'
 
-interface Indicator {
+// ====== V3.0 类型定义 ======
+interface IndicatorScore {
   id: string
   name: string
   value: string
-  date: string
-  yoy: string
-  qoq: string
+  score: number  // +1, 0, -1
+  reason: string
   region: string
-  warningLevel: string | null
 }
 
-interface Dimension {
+interface DimensionScore {
   id: string
   name: string
   icon: string
-  indicators: Indicator[]
+  score: number  // F_维度 = 正分 - 负分
+  indicators: IndicatorScore[]
 }
 
-interface MarketData {
-  lastUpdate: string
-  warningCounts: {
-    level1: number
-    level2: number
-    level3: number
-  }
-  dimensions: Dimension[]
-  decision: {
-    liquidity: string
-    risk: string
-    techTrend: string
-    climate: string
-    liquidityScore: number
-    riskScore: number
-    techTrendScore: number
-    climateScore: number
-    position: string
-    mainDirection: string
-    avoidDirection: string
-  }
+interface IASResult {
+  totalScore: number  // IAS = sum(F_维度)
+  signal: string      // 强烈买入/买入/持有/减仓/清仓
+  position: string   // 仓位建议
+  dimensions: DimensionScore[]
 }
 
-const WARNING_BORDER_COLORS = {
-  level1: 'border-red-500',
-  level2: 'border-yellow-500',
-  level3: 'border-blue-500',
-}
-
-function App() {
-  const { data: rawData, isLoading, isStale, error, refetch } = useMarketData()
-  const [data, setData] = useState<MarketData | null>(null)
-
-  // 数据转换
-  useEffect(() => {
-    if (rawData) {
-      setData(transformData(rawData))
-    }
-  }, [rawData])
-
-  if (isLoading || !data) {
-    return <MarketDataSkeleton />
-  }
-
-  return (
-    <div className="min-h-screen bg-gray-900 text-white p-4">
-      {/* Header */}
-      <header className="text-center mb-6">
-        <h1 className="text-3xl font-bold mb-2">📊 WorldOS 全球运行监控系统</h1>
-        <div className="flex items-center justify-center gap-4">
-          <p className="text-gray-400">最后更新时间：{data.lastUpdate}</p>
-          {isStale && (
-            <span className="px-2 py-1 text-xs bg-yellow-500/20 text-yellow-400 rounded flex items-center gap-1">
-              ⚠️ 数据超过2分钟未更新
-            </span>
-          )}
-          {error && (
-            <span className="px-2 py-1 text-xs bg-red-500/20 text-red-400 rounded">
-              刷新失败，点击重试
-            </span>
-          )}
-        </div>
-        <div className="mt-2">
-          <button 
-            onClick={refetch}
-            className="text-xs text-gray-500 hover:text-gray-300 underline"
-          >
-            手动刷新
-          </button>
-        </div>
-      </header>
-
-      {/* Warning Summary */}
-      <div className="flex justify-center gap-8 mb-6">
-        <div className="flex items-center gap-2">
-          <span className="w-4 h-4 rounded-full bg-red-500"></span>
-          <span>一级预警：{data.warningCounts.level1}</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <span className="w-4 h-4 rounded-full bg-yellow-500"></span>
-          <span>二级预警：{data.warningCounts.level2}</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <span className="w-4 h-4 rounded-full bg-blue-500"></span>
-          <span>三级预警：{data.warningCounts.level3}</span>
-        </div>
-      </div>
-
-      {/* 6-Grid Layout - 3列2行六宫格 */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
-        {data.dimensions.map(dim => (
-          <DimensionCard key={dim.id} dimension={dim} />
-        ))}
-      </div>
-
-      {/* Decision Support */}
-      <DecisionSection decision={data.decision} />
-    </div>
-  )
-}
-
-function DimensionCard({ dimension }: { dimension: Dimension }) {
-  return (
-    <div className="bg-gray-800 rounded-lg p-4 border border-gray-700">
-      <h2 className="text-xl font-semibold mb-3 flex items-center gap-2">
-        <span>{dimension.icon}</span>
-        <span>【{dimension.name}】</span>
-      </h2>
-      <div className="overflow-x-auto">
-        <table className="w-full text-sm">
-          <thead>
-            <tr className="text-gray-400 border-b border-gray-700">
-              <th className="text-left py-2 pr-2">指标</th>
-              <th className="text-right py-2 px-2">数值</th>
-              <th className="text-right py-2 px-2">日期</th>
-              <th className="text-right py-2 px-2">同比</th>
-              <th className="text-right py-2 px-2">环比</th>
-            </tr>
-          </thead>
-          <tbody>
-            {dimension.indicators.map(ind => (
-              <IndicatorRow key={ind.id} indicator={ind} />
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </div>
-  )
-}
-
-function IndicatorRow({ indicator }: { indicator: Indicator }) {
-  const warningLevel = indicator.warningLevel
-  const warningClass = warningLevel 
-    ? `border-l-4 ${WARNING_BORDER_COLORS[warningLevel as keyof typeof WARNING_BORDER_COLORS]}` 
-    : ''
-
-  return (
-    <tr className={`border-b border-gray-700/50 hover:bg-gray-700/30 ${warningClass}`}>
-      <td className="py-2 pr-2">
-        <div className="flex items-center gap-2">
-          <span className="text-xs">{indicator.region}</span>
-          <span>{indicator.name}</span>
-          {warningLevel === 'level1' && (
-            <span className="px-1.5 py-0.5 text-xs bg-red-500/20 text-red-400 rounded">高</span>
-          )}
-          {warningLevel === 'level2' && (
-            <span className="px-1.5 py-0.5 text-xs bg-yellow-500/20 text-yellow-400 rounded">中</span>
-          )}
-          {warningLevel === 'level3' && (
-            <span className="px-1.5 py-0.5 text-xs bg-blue-500/20 text-blue-400 rounded">低</span>
-          )}
-        </div>
-      </td>
-      <td className="text-right py-2 px-2 font-mono font-medium">{indicator.value}</td>
-      <td className="text-right py-2 px-2 text-gray-400">{indicator.date}</td>
-      <td className={`text-right py-2 px-2 ${parseYoY(indicator.yoy) > 0 ? 'text-green-400' : parseYoY(indicator.yoy) < 0 ? 'text-red-400' : 'text-gray-400'}`}>
-        {indicator.yoy}
-      </td>
-      <td className={`text-right py-2 px-2 ${parseYoY(indicator.qoq) > 0 ? 'text-green-400' : parseYoY(indicator.qoq) < 0 ? 'text-red-400' : 'text-gray-400'}`}>
-        {indicator.qoq}
-      </td>
-    </tr>
-  )
-}
-
-function parseYoY(val: string): number {
-  if (val === '-' || !val) return 0
-  const num = parseFloat(val.replace('%', '').replace('bp', ''))
-  return isNaN(num) ? 0 : num
-}
-
-// 数据转换函数：将原始 market-data.json 转换为 App 期望的格式
-function transformData(raw: any): MarketData {
+// ====== V3.0 数据转换 ======
+function transformDataV3(raw: any): IASResult {
   const data = raw.data || {}
   const meta = raw.meta || {}
-  
-  // 龙六设计：6大维度24指标
+
+  // 6大维度24指标 V3.0 配置
   const dimensionConfigs = [
-    { id: 'economic', name: '经济产出', icon: '📈', fields: [
-      { key: 'chinaGdp', name: '中国GDP增速', region: '🇨🇳' },
-      { key: 'chinaPmi', name: '中国PMI', region: '🇨🇳' },
-      { key: 'usGdp', name: '美国GDP增速', region: '🇺🇸' },
-      { key: 'servicePmi', name: '服务业PMI', region: '🇨🇳' }
-    ]},
-    { id: 'inflation', name: '通胀与价格', icon: '💰', fields: [
-      { key: 'cpi', name: 'CPI同比', region: '🇨🇳' },
-      { key: 'ppi', name: 'PPI同比', region: '🇨🇳' },
-      { key: 'usCpi', name: '美国CPI', region: '🇺🇸' },
-      { key: 'corePce', name: '核心PCE', region: '🇺🇸' }
-    ]},
-    { id: 'money', name: '货币与信用', icon: '🏦', fields: [
-      { key: 'lpr', name: 'LPR', region: '🇨🇳' },
-      { key: 'dr007', name: 'DR007', region: '🇨🇳' },
-      { key: 'm2', name: 'M2增速', region: '🇨🇳' },
-      { key: 'fedRate', name: '美联储利率', region: '🇺🇸' }
-    ]},
-    { id: 'risk', name: '风险与不确定性', icon: '⚠️', fields: [
-      { key: 'vix', name: 'VIX指数', region: '🌐' },
-      { key: 'epu', name: 'EPU指数', region: '🌐' },
-      { key: 'dollarIndex', name: '美元指数', region: '🇺🇸' },
-      { key: 'geoRisk', name: '地缘风险', region: '🌐' }
-    ]},
-    { id: 'tech', name: '技术与生产力', icon: '🔬', fields: [
-      { key: 'aiRdRatio', name: 'AI研发占比', region: '🇨🇳' },
-      { key: 'aiPatentCount', name: 'AI专利数', region: '🇨🇳' },
-      { key: 'robotInstallBase', name: '机器人保有量', region: '🇨🇳' },
-      { key: 'quantumComputingBudget', name: '量子计算预算', region: '🌐' }
-    ]},
-    { id: 'climate', name: '气候与资源', icon: '🌍', fields: [
-      { key: 'oilPrice', name: 'WTI原油', region: '🌐' },
-      { key: 'naturalGas', name: '天然气', region: '🌐' },
-      { key: 'carbonPrice', name: '碳价格', region: '🌐' },
-      { key: 'electricity', name: '用电量', region: '🇨🇳' }
-    ]}
+    { 
+      id: 'economic', 
+      name: '经济产出', 
+      icon: '📈', 
+      fields: [
+        { key: 'chinaPmi', name: '中国PMI', region: '🇨🇳', getScore: (v: number) => v > 50 ? 1 : -1 },
+        { key: 'usPmi', name: '美国PMI', region: '🇺🇸', getScore: (v: number) => v > 50 ? 1 : -1 },
+        { key: 'retailSales', name: '社会消费品零售', region: '🇨🇳', getScore: (v: number) => v > 0 ? 1 : -1 },
+        { key: 'usPayroll', name: '非农时薪', region: '🇺🇸', getScore: (v: number) => v < 4 ? 1 : -1 }
+      ]
+    },
+    { 
+      id: 'inflation', 
+      name: '通胀', 
+      icon: '💰', 
+      fields: [
+        { key: 'ppiCpiDiff', name: 'PPI-CPI剪刀差', region: '🇨🇳', getScore: (v: number) => v > 0 ? 1 : -1 },
+        { key: 'usCorePce', name: '美国核心PCE', region: '🇺🇸', getScore: (v: number) => v < 2 ? 1 : (v > 3 ? -1 : 0) },
+        { key: 'gscpi', name: '供应链压力', region: '🌐', getScore: (v: number) => v < 0 ? 1 : (v > 2 ? -1 : 0) },
+        { key: 'cpi', name: '中国CPI', region: '🇨🇳', getScore: (v: number) => v > 0 && v < 3 ? 1 : (v > 5 ? -1 : 0) }
+      ]
+    },
+    { 
+      id: 'money', 
+      name: '货币与信用', 
+      icon: '🏦', 
+      fields: [
+        { key: 'tsf', name: '信用脉冲', region: '🇨🇳', getScore: (v: string) => v === 'up' ? 1 : (v === 'down' ? -1 : 0) },
+        { key: 'realRate10y', name: '10Y美债利率', region: '🇺🇸', getScore: (v: number) => v < 2 ? 1 : (v > 4 ? -1 : 0) },
+        { key: 'm1m2Diff', name: 'M1-M2剪刀差', region: '🇨🇳', getScore: (v: string) => v === 'expand' ? 1 : (v === 'shrink' ? -1 : 0) },
+        { key: 'lpr', name: 'LPR', region: '🇨🇳', getScore: (v: number) => v < 4 ? 1 : (v > 5 ? -1 : 0) }
+      ]
+    },
+    { 
+      id: 'risk', 
+      name: '风险与情绪', 
+      icon: '⚠️', 
+      fields: [
+        { key: 'usdCnh', name: '离岸人民币', region: '🇨🇳', getScore: (v: number) => v < 7.3 ? 1 : -1 },
+        { key: 'northbound', name: '北向资金', region: '🇨🇳', getScore: (v: number) => v > 0 ? 1 : -1 },
+        { key: 'southbound', name: '南向资金', region: '🇭🇰', getScore: (v: number) => v > 0 ? 1 : -1 },
+        { key: 'vix', name: 'VIX', region: '🇺🇸', getScore: (v: number) => v < 20 ? 1 : v > 30 ? -1 : 0 }
+      ]
+    },
+    { 
+      id: 'tech', 
+      name: '技术', 
+      icon: '🔬', 
+      fields: [
+        { key: 'aiEtfFlow', name: 'AI ETF流入', region: '🇨🇳', getScore: (v: number) => v > 0 ? 1 : -1 },
+        { key: 'kcMargin', name: '科创板融资', region: '🇨🇳', getScore: (v: number, prev?: number) => prev ? (v > prev ? 1 : -1) : (v > 1e11 ? 1 : 0) },
+        { key: 'cloudRevenue', name: '云计算营收', region: '🌐', getScore: (v: number, prev?: number) => prev ? (v > prev ? 1 : -1) : (v > 1e11 ? 1 : 0) },
+        { key: 'semiIndex', name: '半导体指数', region: '🇨🇳', getScore: (v: number, prev?: number) => prev ? (v > prev ? 1 : -1) : 0 }
+      ]
+    },
+    { 
+      id: 'commodity', 
+      name: '大宗商品', 
+      icon: '🌍', 
+      fields: [
+        { key: 'brentOil', name: '布伦特原油', region: '🌐', getScore: (v: number) => v < 100 ? 1 : -1 },
+        { key: 'goldPrice', name: '黄金', region: '🌐', getScore: (v: number, prev?: number) => prev ? (v > prev ? 1 : -1) : 0 },
+        { key: 'copperPrice', name: '铜价', region: '🌐', getScore: (v: number, prev?: number) => prev ? (v > prev ? 1 : -1) : 0 },
+        { key: 'keyMinerals', name: '关键矿产', region: '🌐', getScore: (v: number, prev?: number) => prev ? (v > prev ? 1 : -1) : 0 }
+      ]
+    }
   ]
-  
-  const dimensions: Dimension[] = dimensionConfigs.map(dim => {
-    const indicators: Indicator[] = dim.fields.map(field => {
+
+  const dimensions: DimensionScore[] = dimensionConfigs.map(dim => {
+    let positiveCount = 0
+    let negativeCount = 0
+    
+    const indicators: IndicatorScore[] = dim.fields.map(field => {
       const rawValue = data[field.key]
       const fieldMeta = meta[field.key] || {}
       
-      // 处理值显示
+  // 计算得分
+      let score = 0
+      if (rawValue !== undefined && rawValue !== 'NA') {
+        if (typeof field.getScore === 'function') {
+          // 处理字符串类型和数字类型
+          if (typeof rawValue === 'string') {
+            score = (field.getScore as (v: string) => number)(rawValue)
+          } else {
+            score = (field.getScore as (v: number) => number)(rawValue as number)
+          }
+        }
+      }
+      
+      if (score > 0) positiveCount++
+      if (score < 0) negativeCount++
+      
+      // 格式化显示值
       let displayValue = '-'
       if (rawValue !== undefined && rawValue !== 'NA') {
         if (typeof rawValue === 'number') {
-          // 大数值格式化
-          if (rawValue >= 1e9) displayValue = (rawValue / 1e9).toFixed(1) + '亿'
-          else if (rawValue >= 1e6) displayValue = (rawValue / 1e6).toFixed(1) + '万'
-          else displayValue = rawValue.toFixed(2)
+          if (rawValue >= 1e11) displayValue = (rawValue / 1e8).toFixed(0) + '亿'
+          else if (rawValue >= 1e9) displayValue = (rawValue / 1e8).toFixed(1) + '亿'
+          else if (rawValue >= 1e6) displayValue = (rawValue / 1e4).toFixed(0) + '万'
+          else displayValue = typeof rawValue === 'number' ? rawValue.toFixed(2) : String(rawValue)
         } else {
           displayValue = String(rawValue)
         }
@@ -258,76 +143,193 @@ function transformData(raw: any): MarketData {
         id: field.key,
         name: field.name,
         value: displayValue,
-        date: fieldMeta.dateLabel || '-',
-        yoy: fieldMeta.yoyLabel || '-',
-        qoq: fieldMeta.momLabel || '-',
-        region: field.region,
-        warningLevel: null
+        score,
+        reason: fieldMeta.reason || (score === 1 ? '+1' : score === -1 ? '-1' : '0'),
+        region: field.region
       }
     })
     
-    return { id: dim.id, name: dim.name, icon: dim.icon, indicators }
-  })
-  
-  // 预警计算
-  let level1 = 0, level2 = 0, level3 = 0
-  
-  // VIX > 30 一级预警
-  if (data.vix && data.vix > 30) level1++
-  // EPU > 500 二级预警
-  if (data.epu && data.epu > 500) level2++
-  // 油价 > 100 二级预警
-  if (data.oil && data.oil > 100) level2++
-  
-  return {
-    lastUpdate: raw.timestamp || '-',
-    warningCounts: { level1, level2, level3 },
-    dimensions,
-    decision: {
-      liquidity: data.m2 && data.m2 > 10 ? '宽松' : '适中',
-      risk: level1 > 0 ? '偏高' : level2 > 0 ? '中等' : '可控',
-      techTrend: data.aiRdRatio && data.aiRdRatio > 10 ? '向好' : '观望',
-      climate: data.oil && data.oil > 100 ? '震荡' : '平稳',
-      liquidityScore: data.m2 && data.m2 > 10 ? 4 : 3,
-      riskScore: level1 > 0 ? 2 : level2 > 0 ? 3 : 4,
-      techTrendScore: data.aiRdRatio && data.aiRdRatio > 10 ? 4 : 3,
-      climateScore: data.oil && data.oil > 100 ? 2 : 4,
-      position: level1 > 0 ? '防守' : '进攻',
-      mainDirection: '科技/新能源',
-      avoidDirection: '传统能源'
+    return {
+      id: dim.id,
+      name: dim.name,
+      icon: dim.icon,
+      score: positiveCount - negativeCount,
+      indicators
     }
+  })
+
+  // 计算 IAS 总分
+  const totalScore = dimensions.reduce((sum: number, dim: DimensionScore) => sum + dim.score, 0)
+  
+  // 投资建议
+  let signal = '持有'
+  let position = '40-60%'
+  if (totalScore >= 6) {
+    signal = '强烈买入'
+    position = '80-100%'
+  } else if (totalScore >= 3) {
+    signal = '买入'
+    position = '60-80%'
+  } else if (totalScore >= 0) {
+    signal = '持有'
+    position = '40-60%'
+  } else if (totalScore >= -3) {
+    signal = '减仓'
+    position = '20-40%'
+  } else {
+    signal = '清仓'
+    position = '0-20%'
+  }
+
+  return {
+    totalScore,
+    signal,
+    position,
+    dimensions
   }
 }
 
-function DecisionSection({ decision }: { decision: MarketData['decision'] }) {
-  const renderStars = (score: number) => {
-    return '★'.repeat(score) + '☆'.repeat(5 - score)
+// ====== 主组件 ======
+function App() {
+  const { data: rawData, isLoading, isStale, refetch } = useMarketData()
+  const [iasResult, setIasResult] = useState<IASResult | null>(null)
+
+  useEffect(() => {
+    if (rawData) {
+      setIasResult(transformDataV3(rawData))
+    }
+  }, [rawData])
+
+  if (isLoading || !iasResult) {
+    return <MarketDataSkeleton />
   }
 
   return (
-    <div className="bg-gray-800 rounded-lg p-4 border border-gray-700">
-      <h2 className="text-xl font-semibold mb-4">【投资决策建议】</h2>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
-        <DecisionCard title="流动性" value={decision.liquidity} score={decision.liquidityScore} renderStars={renderStars} />
-        <DecisionCard title="风险" value={decision.risk} score={decision.riskScore} renderStars={renderStars} />
-        <DecisionCard title="技术趋势" value={decision.techTrend} score={decision.techTrendScore} renderStars={renderStars} />
-        <DecisionCard title="气候" value={decision.climate} score={decision.climateScore} renderStars={renderStars} />
-      </div>
-      <div className="space-y-2 text-lg">
-        <p><span className="text-yellow-400">📈 仓位建议：</span>{decision.position}</p>
-        <p><span className="text-green-400">🎯 主线方向：</span>{decision.mainDirection}</p>
-        <p><span className="text-red-400">⚠️ 规避方向：</span>{decision.avoidDirection}</p>
+    <div className="min-h-screen bg-gray-900 text-white p-4">
+      {/* Header */}
+      <header className="text-center mb-6">
+        <h1 className="text-3xl font-bold mb-2">📊 WorldOS V3.0 投资评分系统</h1>
+        <div className="flex items-center justify-center gap-4">
+          <p className="text-gray-400">更新时间：{rawData?.timestamp || '-'}</p>
+          {isStale && (
+            <span className="px-2 py-1 text-xs bg-yellow-500/20 text-yellow-400 rounded">
+              ⚠️ 数据超时
+            </span>
+          )}
+        </div>
+        <button onClick={refetch} className="mt-2 text-xs text-gray-500 hover:text-gray-300 underline">
+          手动刷新
+        </button>
+      </header>
+
+      {/* IAS 卡片 */}
+      <IASCard score={iasResult.totalScore} signal={iasResult.signal} position={iasResult.position} />
+
+      {/* 维度条 */}
+      <DimensionBar dimensions={iasResult.dimensions} />
+
+      {/* 6-Grid Layout */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+        {iasResult.dimensions.map(dim => (
+          <DimensionCardV3 key={dim.id} dimension={dim} />
+        ))}
       </div>
     </div>
   )
 }
 
-function DecisionCard({ title, value, score, renderStars }: { title: string, value: string, score: number, renderStars: (n: number) => string }) {
+// ====== IAS 卡片 ======
+function IASCard({ score, signal, position }: { score: number, signal: string, position: string }) {
+  const getColor = () => {
+    if (score >= 6) return 'from-green-600 to-green-500'
+    if (score >= 3) return 'from-green-500 to-emerald-400'
+    if (score >= 0) return 'from-yellow-500 to-orange-400'
+    if (score >= -3) return 'from-orange-500 to-red-400'
+    return 'from-red-600 to-red-500'
+  }
+
+  const getSignalIcon = () => {
+    if (score >= 6) return '🚀'
+    if (score >= 3) return '✅'
+    if (score >= 0) return '➖'
+    if (score >= -3) return '⚠️'
+    return '🛑'
+  }
+
   return (
-    <div className="bg-gray-700/50 rounded p-3 text-center">
-      <div className="text-gray-400 text-sm">{title}</div>
-      <div className="font-medium mb-1">{value}</div>
-      <div className="text-yellow-400 text-sm">{renderStars(score)}</div>
+    <div className={`bg-gradient-to-r ${getColor()} rounded-xl p-6 mb-6 text-center shadow-lg`}>
+      <div className="text-sm text-white/80 mb-1">IAS 综合评分</div>
+      <div className="text-5xl font-bold text-white mb-2">{score > 0 ? '+' : ''}{score}</div>
+      <div className="text-2xl font-semibold text-white flex items-center justify-center gap-2">
+        <span>{getSignalIcon()}</span>
+        <span>{signal}</span>
+      </div>
+      <div className="text-white/80 mt-1">建议仓位: {position}</div>
+    </div>
+  )
+}
+
+// ====== 维度条 ======
+function DimensionBar({ dimensions }: { dimensions: DimensionScore[] }) {
+  return (
+    <div className="flex flex-wrap justify-center gap-2 mb-6">
+      {dimensions.map(dim => (
+        <div 
+          key={dim.id}
+          className={`px-3 py-1 rounded-full text-sm ${
+            dim.score > 0 ? 'bg-green-500/20 text-green-400' :
+            dim.score < 0 ? 'bg-red-500/20 text-red-400' :
+            'bg-gray-500/20 text-gray-400'
+          }`}
+        >
+          {dim.icon} {dim.name} {dim.score > 0 ? '+' : ''}{dim.score}
+        </div>
+      ))}
+    </div>
+  )
+}
+
+// ====== 维度卡片 V3 ======
+function DimensionCardV3({ dimension }: { dimension: DimensionScore }) {
+  const scoreColor = dimension.score > 0 ? 'text-green-400' : dimension.score < 0 ? 'text-red-400' : 'text-gray-400'
+  
+  return (
+    <div className="bg-gray-800 rounded-lg p-4 border border-gray-700">
+      <div className="flex items-center justify-between mb-3">
+        <h2 className="text-lg font-semibold flex items-center gap-2">
+          <span>{dimension.icon}</span>
+          <span>【{dimension.name}】</span>
+        </h2>
+        <span className={`text-xl font-bold ${scoreColor}`}>
+          {dimension.score > 0 ? '+' : ''}{dimension.score}
+        </span>
+      </div>
+      <div className="space-y-2">
+        {dimension.indicators.map(ind => (
+          <IndicatorRowV3 key={ind.id} indicator={ind} />
+        ))}
+      </div>
+    </div>
+  )
+}
+
+// ====== 指标行 V3 ======
+function IndicatorRowV3({ indicator }: { indicator: IndicatorScore }) {
+  const scoreClass = indicator.score > 0 ? 'text-green-400' : indicator.score < 0 ? 'text-red-400' : 'text-gray-500'
+  const scoreIcon = indicator.score > 0 ? '↑' : indicator.score < 0 ? '↓' : '→'
+  
+  return (
+    <div className="flex items-center justify-between py-2 border-b border-gray-700/30 text-sm">
+      <div className="flex items-center gap-2">
+        <span className="text-xs">{indicator.region}</span>
+        <span>{indicator.name}</span>
+      </div>
+      <div className="flex items-center gap-3">
+        <span className="text-gray-400 text-xs">{indicator.value}</span>
+        <span className={`font-medium ${scoreClass} w-8 text-right`}>
+          {scoreIcon} {indicator.score > 0 ? '+' : ''}{indicator.score}
+        </span>
+      </div>
     </div>
   )
 }

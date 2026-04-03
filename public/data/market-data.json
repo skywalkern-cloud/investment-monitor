@@ -1,159 +1,60 @@
 {
-  "timestamp": "2026-04-03T17:55:43.195889",
+  "timestamp": "2026-04-03T22:00:00",
   "data": {
-    "chinaGdp": 5.0,
     "chinaPmi": 50.4,
-    "usGdp": 2.5,
-    "servicePmi": 52.0,
-    "cpi": 2.5,
-    "ppi": -0.5,
-    "usCpi": 3.2,
-    "corePce": 2.9,
+    "usPmi": 51.2,
+    "retailSales": 3.5,
+    "usPayroll": 3.8,
+    "ppiCpiDiff": -2.5,
+    "usCorePce": 2.9,
+    "gscpi": -0.5,
+    "cpi": 2.1,
+    "tsf": "up",
+    "realRate10y": 1.85,
+    "m1m2Diff": "expand",
     "lpr": 3.45,
-    "dr007": 1.8,
-    "m2": 8.3,
-    "fedRate": 5.25,
-    "vix": 18.0,
-    "epu": 750,
-    "dollarIndex": 105.0,
-    "geoRisk": 85,
-    "aiRdRatio": 15.5,
-    "aiPatentCount": 45000,
-    "robotInstallBase": 3500000,
-    "quantumComputingBudget": 15000000000,
-    "oilPrice": 85.0,
-    "naturalGas": 3.5,
-    "carbonPrice": 80,
-    "electricity": 7500
+    "usdCnh": 7.25,
+    "northbound": 8500000000,
+    "southbound": -3200000000,
+    "vix": 18.5,
+    "moveIndex": 145,
+    "aiEtfFlow": 2500000000,
+    "kcMargin": 185000000000,
+    "cloudRevenue": 280000000000,
+    "semiIndex": 4520,
+    "brentOil": 88.5,
+    "goldPrice": 2345.6,
+    "copperPrice": 9450,
+    "keyMinerals": 285
   },
   "meta": {
-    "version": "2.0",
+    "version": "3.0",
     "dimensions": 6,
     "total_indicators": 24,
-    "chinaGdp": {
-      "dateLabel": "2025Q4",
-      "yoyLabel": "+5.0%",
-      "momLabel": "+1.2%"
-    },
-    "chinaPmi": {
-      "dateLabel": "2026-03",
-      "yoyLabel": "+0.8",
-      "momLabel": "+0.2"
-    },
-    "usGdp": {
-      "dateLabel": "2025Q4",
-      "yoyLabel": "+2.5%",
-      "momLabel": "+0.3%"
-    },
-    "servicePmi": {
-      "dateLabel": "2026-03",
-      "yoyLabel": "+1.0",
-      "momLabel": "+0.5"
-    },
-    "cpi": {
-      "dateLabel": "2026-02",
-      "yoyLabel": "+2.5%",
-      "momLabel": "+0.1%"
-    },
-    "ppi": {
-      "dateLabel": "2026-02",
-      "yoyLabel": "-0.5%",
-      "momLabel": "-0.1%"
-    },
-    "usCpi": {
-      "dateLabel": "2026-02",
-      "yoyLabel": "+3.2%",
-      "momLabel": "+0.2%"
-    },
-    "corePce": {
-      "dateLabel": "2026-01",
-      "yoyLabel": "+2.9%",
-      "momLabel": "+0.3%"
-    },
-    "lpr": {
-      "dateLabel": "2026-03",
-      "yoyLabel": "-0.1%",
-      "momLabel": "0%"
-    },
-    "dr007": {
-      "dateLabel": "2026-03",
-      "yoyLabel": "-0.2%",
-      "momLabel": "+0.1%"
-    },
-    "m2": {
-      "dateLabel": "2026-02",
-      "yoyLabel": "+8.3%",
-      "momLabel": "+0.5%"
-    },
-    "fedRate": {
-      "dateLabel": "2026-03",
-      "yoyLabel": "-0.25%",
-      "momLabel": "0%"
-    },
-    "vix": {
-      "dateLabel": "2026-04",
-      "yoyLabel": "-2.5",
-      "momLabel": "+1.2"
-    },
-    "epu": {
-      "dateLabel": "2026-03",
-      "yoyLabel": "+150",
-      "momLabel": "+50"
-    },
-    "dollarIndex": {
-      "dateLabel": "2026-04",
-      "yoyLabel": "+2.5",
-      "momLabel": "+0.3"
-    },
-    "geoRisk": {
-      "dateLabel": "2026-04",
-      "yoyLabel": "+15",
-      "momLabel": "+5"
-    },
-    "aiRdRatio": {
-      "dateLabel": "2025",
-      "yoyLabel": "+2.5%",
-      "momLabel": "-"
-    },
-    "aiPatentCount": {
-      "dateLabel": "2025",
-      "yoyLabel": "+12%",
-      "momLabel": "-"
-    },
-    "robotInstallBase": {
-      "dateLabel": "2025",
-      "yoyLabel": "+15%",
-      "momLabel": "-"
-    },
-    "quantumComputingBudget": {
-      "dateLabel": "2025",
-      "yoyLabel": "+20%",
-      "momLabel": "-"
-    },
-    "oilPrice": {
-      "dateLabel": "2026-04",
-      "yoyLabel": "-8%",
-      "momLabel": "+3%"
-    },
-    "naturalGas": {
-      "dateLabel": "2026-04",
-      "yoyLabel": "-15%",
-      "momLabel": "+5%"
-    },
-    "carbonPrice": {
-      "dateLabel": "2026-04",
-      "yoyLabel": "+10%",
-      "momLabel": "-2%"
-    },
-    "electricity": {
-      "dateLabel": "2026-02",
-      "yoyLabel": "+5.5%",
-      "momLabel": "+2.1%"
-    }
-  },
-  "validity_report": {
-    "total": 24,
-    "valid": 24,
-    "invalid": 0
+    "chinaPmi": {"dateLabel": "2026-03", "valueLabel": "50.4", "reason": "50.4>50 → +1"},
+    "usPmi": {"dateLabel": "2026-03", "valueLabel": "51.2", "reason": "51.2>50 → +1"},
+    "retailSales": {"dateLabel": "2026-02", "valueLabel": "3.5%", "reason": "3.5%>0 → +1"},
+    "usPayroll": {"dateLabel": "2026-03", "valueLabel": "3.8%", "reason": "3.8%<4 → +1"},
+    "ppiCpiDiff": {"dateLabel": "2026-02", "valueLabel": "-2.5", "reason": "负向剪刀差 → -1"},
+    "usCorePce": {"dateLabel": "2026-02", "valueLabel": "2.9%", "reason": ">2% → -1"},
+    "gscpi": {"dateLabel": "2026-03", "valueLabel": "-0.5", "reason": "负值 → +1"},
+    "cpi": {"dateLabel": "2026-02", "valueLabel": "2.1%", "reason": "正常区间 → 0"},
+    "tsf": {"dateLabel": "2026-03", "valueLabel": "拐点向上", "reason": "向上 → +1"},
+    "realRate10y": {"dateLabel": "2026-04", "valueLabel": "1.85%", "reason": "1.85%<2% → +1"},
+    "m1m2Diff": {"dateLabel": "2026-02", "valueLabel": "扩大", "reason": "扩大 → +1"},
+    "lpr": {"dateLabel": "2026-03", "valueLabel": "3.45%", "reason": "保持 → 0"},
+    "usdCnh": {"dateLabel": "2026-04", "valueLabel": "7.25", "reason": "7.25<7.3 → +1"},
+    "northbound": {"dateLabel": "2026-04", "valueLabel": "85亿", "reason": "流入 → +1"},
+    "southbound": {"dateLabel": "2026-04", "valueLabel": "-32亿", "reason": "流出 → -1"},
+    "vix": {"dateLabel": "2026-04", "valueLabel": "18.5", "reason": "18.5<20 → +1"},
+    "moveIndex": {"dateLabel": "2026-04", "valueLabel": "145", "reason": "中等 → 0"},
+    "aiEtfFlow": {"dateLabel": "2026-04", "valueLabel": "25亿", "reason": "流入 → +1"},
+    "kcMargin": {"dateLabel": "2026-03", "valueLabel": "1850亿", "reason": "增加 → +1"},
+    "cloudRevenue": {"dateLabel": "2025Q4", "valueLabel": "2800亿", "reason": "增长 → +1"},
+    "semiIndex": {"dateLabel": "2026-04", "valueLabel": "4520", "reason": "上涨 → +1"},
+    "brentOil": {"dateLabel": "2026-04", "valueLabel": "88.5", "reason": "88.5<100 → +1"},
+    "goldPrice": {"dateLabel": "2026-04", "valueLabel": "2345.6", "reason": "上涨 → +1"},
+    "copperPrice": {"dateLabel": "2026-04", "valueLabel": "9450", "reason": "上涨 → +1"},
+    "keyMinerals": {"dateLabel": "2026-04", "valueLabel": "285", "reason": "平稳 → 0"}
   }
 }
