@@ -9,7 +9,7 @@ import {
   StatusBadge,
   LabeledMetricRow 
 } from './DimensionCard';
-import { MetricData, calculateAlertStatus, getDimensionStatus } from '../data/marketData';
+import { type MetricData, calculateAlertStatus, getDimensionStatus } from '../data/marketData';
 import { getDashboardSummary } from '../data/alerts';
 
 interface DashboardProps {

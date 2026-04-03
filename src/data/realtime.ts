@@ -1,7 +1,7 @@
 // 投资监控仪表盘 - 实时数据获取
 // 龙五负责数据整合
 
-import { MetricData, defaultData } from './marketData';
+import { type MetricData, defaultData } from './marketData';
 
 // 获取实时数据的API URL (未来使用)
 // const DATA_API_URL = '/api/market-data';

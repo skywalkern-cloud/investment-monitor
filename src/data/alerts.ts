@@ -1,7 +1,7 @@
 // 投资监控仪表盘 - 预警阈值逻辑 + 三级预警 + 投资建议
 // 龙七负责完善
 
-import { MetricData, AlertStatus } from '../data/marketData';
+import type { MetricData, AlertStatus } from '../data/marketData';
 
 // ==================== 预警阈值定义 ====================
 

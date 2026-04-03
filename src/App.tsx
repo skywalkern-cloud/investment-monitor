@@ -199,20 +199,20 @@ function transformData(raw: any): MarketData {
   // 龙六设计：6大维度24指标
   const dimensionConfigs = [
     { id: 'economic', name: '经济产出', icon: '📈', fields: [
-      { key: 'gdp', name: '中国GDP增速', region: '🇨🇳' },
-      { key: 'pmi', name: '中国PMI', region: '🇨🇳' },
-      { key: 'nonfarm', name: '美国GDP增速', region: '🇺🇸' },
+      { key: 'chinaGdp', name: '中国GDP增速', region: '🇨🇳' },
+      { key: 'chinaPmi', name: '中国PMI', region: '🇨🇳' },
+      { key: 'usGdp', name: '美国GDP增速', region: '🇺🇸' },
       { key: 'servicePmi', name: '服务业PMI', region: '🇨🇳' }
     ]},
     { id: 'inflation', name: '通胀与价格', icon: '💰', fields: [
       { key: 'cpi', name: 'CPI同比', region: '🇨🇳' },
       { key: 'ppi', name: 'PPI同比', region: '🇨🇳' },
-      { key: 'usCPI', name: '美国CPI', region: '🇺🇸' },
-      { key: 'corePCE', name: '核心PCE', region: '🇺🇸' }
+      { key: 'usCpi', name: '美国CPI', region: '🇺🇸' },
+      { key: 'corePce', name: '核心PCE', region: '🇺🇸' }
     ]},
     { id: 'money', name: '货币与信用', icon: '🏦', fields: [
-      { key: 'interest', name: 'LPR', region: '🇨🇳' },
-      { key: 'cny', name: '人民币汇率', region: '🇨🇳' },
+      { key: 'lpr', name: 'LPR', region: '🇨🇳' },
+      { key: 'dr007', name: 'DR007', region: '🇨🇳' },
       { key: 'm2', name: 'M2增速', region: '🇨🇳' },
       { key: 'fedRate', name: '美联储利率', region: '🇺🇸' }
     ]},
@@ -220,7 +220,7 @@ function transformData(raw: any): MarketData {
       { key: 'vix', name: 'VIX指数', region: '🌐' },
       { key: 'epu', name: 'EPU指数', region: '🌐' },
       { key: 'dollarIndex', name: '美元指数', region: '🇺🇸' },
-      { key: 'riskLevel', name: '地缘风险', region: '🌐' }
+      { key: 'geoRisk', name: '地缘风险', region: '🌐' }
     ]},
     { id: 'tech', name: '技术与生产力', icon: '🔬', fields: [
       { key: 'aiRdRatio', name: 'AI研发占比', region: '🇨🇳' },
@@ -229,9 +229,9 @@ function transformData(raw: any): MarketData {
       { key: 'quantumComputingBudget', name: '量子计算预算', region: '🌐' }
     ]},
     { id: 'climate', name: '气候与资源', icon: '🌍', fields: [
-      { key: 'oil', name: 'WTI原油', region: '🌐' },
-      { key: 'gold', name: '黄金价格', region: '🌐' },
-      { key: 'copper', name: '伦铜', region: '🌐' },
+      { key: 'oilPrice', name: 'WTI原油', region: '🌐' },
+      { key: 'naturalGas', name: '天然气', region: '🌐' },
+      { key: 'carbonPrice', name: '碳价格', region: '🌐' },
       { key: 'electricity', name: '用电量', region: '🇨🇳' }
     ]}
   ]

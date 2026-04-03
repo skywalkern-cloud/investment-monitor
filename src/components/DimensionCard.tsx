@@ -4,7 +4,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { AlertStatus } from '../data/marketData';
+import type { AlertStatus } from '../data/marketData';
 
 interface DimensionCardProps {
   title: string;
