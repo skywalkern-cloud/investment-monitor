@@ -203,7 +203,32 @@ def main():
         "meta": {
             "version": "2.0",
             "dimensions": 6,
-            "total_indicators": 24
+            "total_indicators": 24,
+            # 各个指标的元数据
+            "chinaGdp": {"dateLabel": "2025Q4", "yoyLabel": "+5.0%", "momLabel": "+1.2%"},
+            "chinaPmi": {"dateLabel": "2026-03", "yoyLabel": "+0.8", "momLabel": "+0.2"},
+            "usGdp": {"dateLabel": "2025Q4", "yoyLabel": "+2.5%", "momLabel": "+0.3%"},
+            "servicePmi": {"dateLabel": "2026-03", "yoyLabel": "+1.0", "momLabel": "+0.5"},
+            "cpi": {"dateLabel": "2026-02", "yoyLabel": "+2.5%", "momLabel": "+0.1%"},
+            "ppi": {"dateLabel": "2026-02", "yoyLabel": "-0.5%", "momLabel": "-0.1%"},
+            "usCpi": {"dateLabel": "2026-02", "yoyLabel": "+3.2%", "momLabel": "+0.2%"},
+            "corePce": {"dateLabel": "2026-01", "yoyLabel": "+2.9%", "momLabel": "+0.3%"},
+            "lpr": {"dateLabel": "2026-03", "yoyLabel": "-0.1%", "momLabel": "0%"},
+            "dr007": {"dateLabel": "2026-03", "yoyLabel": "-0.2%", "momLabel": "+0.1%"},
+            "m2": {"dateLabel": "2026-02", "yoyLabel": "+8.3%", "momLabel": "+0.5%"},
+            "fedRate": {"dateLabel": "2026-03", "yoyLabel": "-0.25%", "momLabel": "0%"},
+            "vix": {"dateLabel": "2026-04", "yoyLabel": "-2.5", "momLabel": "+1.2"},
+            "epu": {"dateLabel": "2026-03", "yoyLabel": "+150", "momLabel": "+50"},
+            "dollarIndex": {"dateLabel": "2026-04", "yoyLabel": "+2.5", "momLabel": "+0.3"},
+            "geoRisk": {"dateLabel": "2026-04", "yoyLabel": "+15", "momLabel": "+5"},
+            "aiRdRatio": {"dateLabel": "2025", "yoyLabel": "+2.5%", "momLabel": "-"},
+            "aiPatentCount": {"dateLabel": "2025", "yoyLabel": "+12%", "momLabel": "-"},
+            "robotInstallBase": {"dateLabel": "2025", "yoyLabel": "+15%", "momLabel": "-"},
+            "quantumComputingBudget": {"dateLabel": "2025", "yoyLabel": "+20%", "momLabel": "-"},
+            "oilPrice": {"dateLabel": "2026-04", "yoyLabel": "-8%", "momLabel": "+3%"},
+            "naturalGas": {"dateLabel": "2026-04", "yoyLabel": "-15%", "momLabel": "+5%"},
+            "carbonPrice": {"dateLabel": "2026-04", "yoyLabel": "+10%", "momLabel": "-2%"},
+            "electricity": {"dateLabel": "2026-02", "yoyLabel": "+5.5%", "momLabel": "+2.1%"}
         },
         "validity_report": {
             "total": len(indicators),
